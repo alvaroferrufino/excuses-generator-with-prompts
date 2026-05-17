@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <!-- Night Sky -->
+  <rect width="800" height="400" fill="darkblue" />
+
+  <!-- Moon -->
+  <circle cx="700" cy="100" r="50" fill="lightyellow" />
+
+  <!-- Buildings -->
+  <rect x="50" y="200" width="100" height="200" fill="gray" />
+  <rect x="200" y="150" width="120" height="250" fill="dimgray" />
+  <rect x="400" y="180" width="80" height="220" fill="darkgray" />
+  <rect x="550" y="100" width="150" height="300" fill="black" />
+
+  <!-- Windows -->
+  <rect x="60" y="220" width="20" height="20" fill="yellow" />
+  <rect x="90" y="220" width="20" height="20" fill="yellow" />
+  <rect x="60" y="260" width="20" height="20" fill="yellow" />
+  <rect x="90" y="260" width="20" height="20" fill="yellow" />
+
+  <rect x="210" y="170" width="20" height="20" fill="yellow" />
+  <rect x="240" y="170" width="20" height="20" fill="yellow" />
+  <rect x="210" y="210" width="20" height="20" fill="yellow" />
+  <rect x="240" y="210" width="20" height="20" fill="yellow" />
+</svg>

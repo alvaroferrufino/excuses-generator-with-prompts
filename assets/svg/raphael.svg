@@ -1,0 +1,19 @@
+<svg width="120" height="200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Raphael: cuerpo entero, máscara roja, sais -->
+  <ellipse cx="60" cy="60" rx="40" ry="50" fill="#7ec850" stroke="#4e7d2b" stroke-width="4"/>
+  <rect x="40" y="110" width="40" height="60" rx="20" fill="#7ec850" stroke="#4e7d2b" stroke-width="4"/>
+  <rect x="50" y="170" width="20" height="20" rx="10" fill="#7ec850" stroke="#4e7d2b" stroke-width="4"/>
+  <rect x="30" y="170" width="20" height="20" rx="10" fill="#7ec850" stroke="#4e7d2b" stroke-width="4"/>
+  <rect x="70" y="170" width="20" height="20" rx="10" fill="#7ec850" stroke="#4e7d2b" stroke-width="4"/>
+  <!-- Máscara roja -->
+  <rect x="30" y="50" width="60" height="20" rx="10" fill="#d32f2f"/>
+  <circle cx="45" cy="60" r="6" fill="#fff"/>
+  <circle cx="75" cy="60" r="6" fill="#fff"/>
+  <circle cx="45" cy="60" r="3" fill="#222"/>
+  <circle cx="75" cy="60" r="3" fill="#222"/>
+  <!-- Sais -->
+  <rect x="20" y="130" width="4" height="30" rx="2" fill="#bbb" stroke="#888" stroke-width="2"/>
+  <rect x="96" y="130" width="4" height="30" rx="2" fill="#bbb" stroke="#888" stroke-width="2"/>
+  <rect x="18" y="155" width="8" height="4" rx="2" fill="#d32f2f"/>
+  <rect x="94" y="155" width="8" height="4" rx="2" fill="#d32f2f"/>
+</svg>

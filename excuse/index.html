@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Album de Excusas Ninja</title>
+    <style>
+      :root {
+        --paper: #f7f1cf;
+        --ink: #1a1a1a;
+        --brand-red: #c52a28;
+        --brand-blue: #1a3c8f;
+        --card: #fffdf2;
+        font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 12% 20%, #fff7c8 0, transparent 34%),
+          radial-gradient(circle at 85% 80%, #ffe28a 0, transparent 30%),
+          repeating-linear-gradient(
+            135deg,
+            #f6e8af 0,
+            #f6e8af 18px,
+            #f9f1cc 18px,
+            #f9f1cc 36px
+          );
+      }
+
+      .album {
+        width: min(1000px, 100%);
+        background: var(--paper);
+        border: 3px solid var(--ink);
+        border-radius: 16px;
+        display: grid;
+        grid-template-columns: 330px 1fr;
+        gap: 22px;
+        padding: 24px;
+        box-shadow: 10px 10px 0 var(--ink);
+      }
+
+      .sticker-card {
+        background: var(--card);
+        border: 2px solid var(--ink);
+        border-radius: 14px;
+        padding: 14px;
+        box-shadow: inset 0 0 0 2px #e7e0bc;
+      }
+
+      .sticker-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 700;
+        font-size: 0.82rem;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+
+      .sticker-header span:last-child {
+        background: var(--brand-red);
+        color: #fff;
+        border-radius: 6px;
+        padding: 3px 8px;
+      }
+
+      .sticker-frame {
+        border: 2px solid var(--ink);
+        border-radius: 10px;
+        overflow: hidden;
+        background: #d6e7ff;
+        aspect-ratio: 3 / 4;
+      }
+
+      .cartoon-scene {
+        --mask-color: #2563eb;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: #0a0a1a;
+        transition: background-image 0.7s cubic-bezier(.4,1.4,.6,1);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .sewer-lid {
+        position: absolute;
+        bottom: 16%;
+        left: 50%;
+        width: 75%;
+        height: 22%;
+        transform: translateX(-50%);
+        border-radius: 50%;
+        border: 3px solid #2a2a2a;
+        background:
+          repeating-linear-gradient(
+            90deg,
+            #657077 0,
+            #657077 10px,
+            #7f8b91 10px,
+            #7f8b91 20px
+          );
+        box-shadow: inset 0 0 0 3px #545c61;
+      }
+
+      .scene-target {
+        position: absolute;
+        right: 10%;
+        bottom: 28%;
+        width: 110px;
+        min-height: 76px;
+        padding: 8px;
+        border: 2px solid #2a2a2a;
+        border-radius: 10px;
+        background: #fff7d1;
+        box-shadow: 3px 3px 0 #5a5a5a;
+        transform-origin: center bottom;
+        z-index: 2;
+      }
+
+      .target-near {
+        right: 22%;
+        bottom: 25%;
+      }
+
+      .target-middle {
+        right: 12%;
+        bottom: 28%;
+      }
+
+      .target-high {
+        right: 10%;
+        bottom: 43%;
+      }
+
+      .target-low {
+        right: 14%;
+        bottom: 20%;
+      }
+
+      .target-label {
+        margin: 0;
+        font-size: 0.62rem;
+        line-height: 1.25;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .turtle {
+        position: absolute;
+        bottom: 20%;
+        left: 50%;
+        width: 120px;
+        height: 150px;
+        transform: translateX(-50%);
+        transform-origin: center bottom;
+      }
+
+      .turtle-leonardo .turtle-shell {
+        box-shadow: 0 0 0 2px #7fb0ff inset;
+      }
+
+      .turtle-raphael .turtle-shell {
+        box-shadow: 0 0 0 2px #ff9f9f inset;
+      }
+
+      .turtle-donatello .turtle-shell {
+        box-shadow: 0 0 0 2px #d8b4fe inset;
+      }
+
+      .turtle-michelangelo .turtle-shell {
+        box-shadow: 0 0 0 2px #fdba74 inset;
+      }
+
+      .turtle-head {
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        width: 52px;
+        height: 48px;
+        transform: translateX(-50%);
+        border-radius: 50%;
+        background: #4f9c37;
+        border: 2px solid #1d3a16;
+      }
+
+      .turtle-mask {
+        position: absolute;
+        top: 16px;
+        left: 5px;
+        right: 5px;
+        height: 11px;
+        border-radius: 999px;
+        background: var(--mask-color);
+      }
+
+      .turtle-shell {
+        position: absolute;
+        top: 46px;
+        left: 50%;
+        width: 88px;
+        height: 94px;
+        transform: translateX(-50%);
+        border-radius: 42px;
+        border: 2px solid #4e2f16;
+        background:
+          radial-gradient(circle at 50% 35%, #a7743d 0 22%, transparent 23%),
+          radial-gradient(circle at 30% 60%, #bb8545 0 21%, transparent 22%),
+          radial-gradient(circle at 70% 60%, #bb8545 0 21%, transparent 22%),
+          #8f5b2d;
+      }
+
+      .turtle-arm,
+      .turtle-leg {
+        position: absolute;
+        background: #4f9c37;
+        border: 2px solid #1d3a16;
+        border-radius: 999px;
+      }
+
+      .turtle-arm {
+        top: 70px;
+        width: 42px;
+        height: 14px;
+      }
+
+      .arm-left {
+        left: 0;
+        transform: rotate(18deg);
+      }
+
+      .arm-right {
+        right: 0;
+        transform: rotate(-18deg);
+      }
+
+      .turtle-leg {
+        bottom: 0;
+        width: 38px;
+        height: 16px;
+      }
+
+      .leg-left {
+        left: 22px;
+      }
+
+      .leg-right {
+        right: 22px;
+      }
+
+      .pose-slide .arm-left {
+        transform: translate(-2px, 6px) rotate(55deg);
+      }
+
+      .pose-slide .arm-right {
+        transform: translate(2px, 6px) rotate(-55deg);
+      }
+
+      .pose-slide .leg-left {
+        transform: translateX(-8px) rotate(-12deg);
+      }
+
+      .pose-slide .leg-right {
+        transform: translateX(8px) rotate(12deg);
+      }
+
+      .pose-kick .arm-left {
+        transform: translate(-4px, -2px) rotate(65deg);
+      }
+
+      .pose-kick .arm-right {
+        transform: translate(6px, 2px) rotate(-35deg);
+      }
+
+      .pose-kick .leg-right {
+        transform: translate(14px, -16px) rotate(-28deg);
+      }
+
+      .pose-spin .arm-left {
+        transform: rotate(112deg);
+      }
+
+      .pose-spin .arm-right {
+        transform: rotate(-112deg);
+      }
+
+      .pose-spin .leg-left {
+        transform: rotate(-28deg);
+      }
+
+      .pose-spin .leg-right {
+        transform: rotate(28deg);
+      }
+
+      .pose-dodge .arm-left {
+        transform: translate(-10px, 10px) rotate(90deg);
+      }
+
+      .pose-dodge .arm-right {
+        transform: translate(6px, -6px) rotate(-10deg);
+      }
+
+      .pose-dodge .leg-left {
+        transform: translate(-10px, 4px) rotate(-8deg);
+      }
+
+      .pose-train .arm-left {
+        transform: translate(-4px, -6px) rotate(128deg);
+      }
+
+      .pose-train .arm-right {
+        transform: translate(4px, -6px) rotate(-128deg);
+      }
+
+      .pose-train .leg-left {
+        transform: translateY(2px) rotate(8deg);
+      }
+
+      .pose-train .leg-right {
+        transform: translateY(2px) rotate(-8deg);
+      }
+
+
+      .anim-slide {
+        animation: slideAction 1.2s ease;
+      }
+
+      .anim-kick {
+        animation: kickAction 1.2s ease;
+      }
+
+      .anim-spin {
+        animation: spinAction 1.1s ease;
+      }
+
+      .anim-dodge {
+        animation: dodgeAction 1.2s ease;
+      }
+
+      .anim-train {
+        animation: trainAction 1.3s ease;
+      }
+
+      .target-fall {
+        animation: targetFall 1.2s ease;
+      }
+
+      .target-break {
+        animation: targetBreak 1.2s ease;
+        background:
+          linear-gradient(48deg, transparent 47%, #8b0000 48%, #8b0000 52%, transparent 53%),
+          linear-gradient(-40deg, transparent 46%, #8b0000 47%, #8b0000 51%, transparent 52%),
+          #fff7d1;
+      }
+
+      .target-chaos {
+        animation: targetChaos 1.1s ease;
+      }
+
+      .target-flat {
+        animation: targetFlat 1.2s ease;
+      }
+
+      .target-split {
+        animation: targetSplit 1.3s ease;
+        background:
+          linear-gradient(90deg, #fff7d1 0 47%, #7b1111 47% 53%, #fff7d1 53% 100%);
+      }
+
+      @keyframes slideAction {
+        0% {
+          transform: translateX(-50%);
+        }
+        45% {
+          transform: translate(-30%, -18px) rotate(-8deg);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      @keyframes kickAction {
+        0% {
+          transform: translateX(-50%) rotate(0deg);
+        }
+        35% {
+          transform: translateX(-40%) rotate(-10deg) scale(1.08);
+        }
+        100% {
+          transform: translateX(-50%) rotate(0deg);
+        }
+      }
+
+      @keyframes spinAction {
+        0% {
+          transform: translateX(-50%) rotate(0deg);
+        }
+        55% {
+          transform: translateX(-50%) rotate(250deg);
+        }
+        100% {
+          transform: translateX(-50%) rotate(360deg);
+        }
+      }
+
+      @keyframes dodgeAction {
+        0% {
+          transform: translateX(-50%);
+        }
+        25% {
+          transform: translate(-58%, -12px);
+        }
+        75% {
+          transform: translate(-42%, -4px);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      @keyframes trainAction {
+        0% {
+          transform: translateX(-50%) scale(1);
+        }
+        25% {
+          transform: translateX(-50%) scale(1.1);
+        }
+        50% {
+          transform: translateX(-50%) scale(0.94);
+        }
+        100% {
+          transform: translateX(-50%) scale(1);
+        }
+      }
+
+      @keyframes targetFall {
+        0% {
+          transform: rotate(0deg);
+        }
+        52% {
+          transform: rotate(26deg) translateX(12px);
+        }
+        100% {
+          transform: rotate(80deg) translate(28px, 4px);
+        }
+      }
+
+      @keyframes targetBreak {
+        0% {
+          transform: scale(1);
+          filter: none;
+        }
+        40% {
+          transform: scale(1.08) rotate(-3deg);
+        }
+        70% {
+          transform: scale(0.95) rotate(2deg);
+          filter: brightness(0.9);
+        }
+        100% {
+          transform: scale(0.9) rotate(0deg);
+          filter: grayscale(0.45);
+        }
+      }
+
+      @keyframes targetChaos {
+        0% {
+          transform: rotate(0deg) translate(0, 0);
+        }
+        25% {
+          transform: rotate(12deg) translate(-6px, -8px);
+        }
+        50% {
+          transform: rotate(-14deg) translate(8px, 6px);
+        }
+        75% {
+          transform: rotate(18deg) translate(-4px, -3px);
+        }
+        100% {
+          transform: rotate(-10deg) translate(0, 0);
+        }
+      }
+
+      @keyframes targetFlat {
+        0% {
+          transform: scaleY(1) scaleX(1);
+        }
+        58% {
+          transform: scaleY(0.28) scaleX(1.28) translateY(22px);
+        }
+        100% {
+          transform: scaleY(0.38) scaleX(1.22) translateY(18px);
+        }
+      }
+
+      @keyframes targetSplit {
+        0% {
+          transform: scaleX(1);
+        }
+        45% {
+          transform: scaleX(1.08) skewX(6deg);
+        }
+        100% {
+          transform: scaleX(1.18) skewX(0deg);
+          letter-spacing: 0.04em;
+        }
+      }
+
+      .sticker-name {
+        margin: 10px 0 2px;
+        font-size: 1.3rem;
+      }
+
+      .sticker-note {
+        margin: 0;
+        color: #444;
+        font-size: 0.9rem;
+      }
+
+      #timeline-label {
+        margin-top: 6px;
+        font-size: 0.76rem;
+        line-height: 1.25;
+      }
+
+      #action-label {
+        margin-top: 8px;
+        font-size: 0.82rem;
+      }
+
+      .excuse-panel {
+        background: var(--card);
+        border: 2px solid var(--ink);
+        border-radius: 14px;
+        padding: 18px;
+      }
+
+      .title {
+        margin: 0;
+        font-size: clamp(1.35rem, 3vw, 2rem);
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+      }
+
+      .subtitle {
+        margin: 8px 0 16px;
+      }
+
+      #excuse {
+        font-size: 1.25rem;
+        line-height: 1.6;
+        margin: 8px 0 22px;
+        min-height: 3.6em;
+        padding: 12px;
+        border-left: 5px solid var(--brand-blue);
+        background: #fff;
+      }
+
+      button {
+        border: 0;
+        border-radius: 10px;
+        padding: 12px 18px;
+        background: linear-gradient(90deg, var(--brand-blue), var(--brand-red));
+        color: #fff;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+
+      button:hover {
+        filter: brightness(1.05);
+      }
+
+      @media (max-width: 860px) {
+        .album {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="album">
+      <section class="sticker-card">
+        <div class="sticker-header">
+          <span>Legend Card</span>
+          <span id="sticker-number">#001</span>
+        </div>
+        <figure class="sticker-frame">
+          <div id="cartoon-scene" class="cartoon-scene" aria-label="Escena animada de Tortuga Ninja">
+            <div id="turtle" class="turtle" style="all:unset;display:flex;align-items:center;justify-content:center;width:100%;height:220px;position:relative;">
+              <img id="turtle-face-img" src="../assets/svg/leonardo.svg" alt="Leonardo" style="width:120px;height:180px;border-radius:16px;border:3px solid #1d3a16;background:#fff;object-fit:contain;box-shadow:0 2px 16px #0008;display:block;position:relative;z-index:2;" />
+            </div>
+          </div>
+        </figure>
+        <h2 id="player-name" class="sticker-name">Leonardo</h2>
+        <p id="action-label" class="sticker-note">Animacion: lista para entrar en accion.</p>
+        <p id="timeline-label" class="sticker-note">Momento: esperando una fecha historica.</p>
+      </section>
+
+      <section class="excuse-panel">
+        <h1 class="title">Generador de Excusas</h1>
+        <p class="subtitle">Version Tortugas Ninja con caos mutante</p>
+        <p id="excuse">Haz clic para generar una excusa.</p>
+        <button id="generate-btn" type="button">Generar otra excusa</button>
+      </section>
+    </main>
+
+    <script src="./web-generator.js"></script>
+  </body>
+</html>

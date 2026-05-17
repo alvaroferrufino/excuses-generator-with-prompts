@@ -1,0 +1,16 @@
+<svg width="120" height="200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Donatello: cuerpo entero, máscara morada, bo staff -->
+  <ellipse cx="60" cy="60" rx="40" ry="50" fill="#7ec850" stroke="#4e7d2b" stroke-width="4"/>
+  <rect x="40" y="110" width="40" height="60" rx="20" fill="#7ec850" stroke="#4e7d2b" stroke-width="4"/>
+  <rect x="50" y="170" width="20" height="20" rx="10" fill="#7ec850" stroke="#4e7d2b" stroke-width="4"/>
+  <rect x="30" y="170" width="20" height="20" rx="10" fill="#7ec850" stroke="#4e7d2b" stroke-width="4"/>
+  <rect x="70" y="170" width="20" height="20" rx="10" fill="#7ec850" stroke="#4e7d2b" stroke-width="4"/>
+  <!-- Máscara morada -->
+  <rect x="30" y="50" width="60" height="20" rx="10" fill="#8e24aa"/>
+  <circle cx="45" cy="60" r="6" fill="#fff"/>
+  <circle cx="75" cy="60" r="6" fill="#fff"/>
+  <circle cx="45" cy="60" r="3" fill="#222"/>
+  <circle cx="75" cy="60" r="3" fill="#222"/>
+  <!-- Bo staff -->
+  <rect x="56" y="120" width="8" height="60" rx="3" fill="#a1887f" stroke="#5d4037" stroke-width="2"/>
+</svg>
